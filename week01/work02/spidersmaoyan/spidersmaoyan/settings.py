@@ -9,6 +9,8 @@
 
 BOT_NAME = 'spidersmaoyan'
 
+
+
 SPIDER_MODULES = ['spidersmaoyan.spiders']
 NEWSPIDER_MODULE = 'spidersmaoyan.spiders'
 
@@ -50,10 +52,11 @@ DOWNLOAD_DELAY = 3
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+   'Accept-Language': 'en',
+   'Cookie': '__mta=209108269.1593143446359.1593254551592.1593254804502.10; uuid_n_v=v1; uuid=02E77630B75811EA842AD7B3BE0152F2DE9BF4F48EA24DB496A046419596F096; mojo-uuid=72283bb5b87c48307dae9a2a9c501a44; _lxsdk_cuid=172ee89fcf4c8-0c5bb6a5a773b1-581b3318-1fa400-172ee89fcf4c8; _lxsdk=02E77630B75811EA842AD7B3BE0152F2DE9BF4F48EA24DB496A046419596F096; _csrf=048f35eb5d3f4c2551f22630594947d094ddfebcadfc26998cbcc18762467144; Hm_lvt_703e94591e87be68cc8da0da7cbd0be2=1593139920,1593240222; mojo-session-id={"id":"19f68d4fe72dbe20b46f17302feac63d","time":1593253328693}; mojo-trace-id=10; Hm_lpvt_703e94591e87be68cc8da0da7cbd0be2=1593256123; __mta=209108269.1593143446359.1593254804502.1593256122756.11; _lxsdk_s=172f55e3dee-220-5d7-122%7C%7C14'
+}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html

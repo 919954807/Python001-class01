@@ -36,7 +36,7 @@ class MaoyanmoviesSpider(scrapy.Spider):
             yield scrapy.Request(url=real_link,meta={'item':item},callback=self.parse2)
 
     def parse2(self, response):
-        #定义存数据的item
+        #详情页取定义存数据的item
         item = response.meta['item']
         #通过url取数据
         movies = Selector(response=response).xpath('//div[@class="movie-brief-container"]')
@@ -45,20 +45,26 @@ class MaoyanmoviesSpider(scrapy.Spider):
         for movie in movies:
             filmtitle = movie.xpath('./h1/text()')
             
+            
             #filmtype不定，有多个，用循环取,暂未实现
-            filmtypes = Selector(response=response).xpath('//a[@class="text-link"]')
+            filmtypes = Selector(response=response).xpath('//li[@class="ellipsis"]')
             print("-------------打印filmtypes-------------------------")
             print(filmtypes)
             filmtypestr = ' '
             for filmtype in filmtypes:
                 print("-------------打印filmtype-------------------------")
                 print(filmtype)
-                tempstr = filmtype.xpath('./a')
+                i = filmtypes.index(filmtype)
+                #print("i:" + str(i))
+                tempstr = filmtype.xpath('/html/body/div[3]/div/div[2]/div[1]/ul/li[1]/a[1]/text()').extract_first().strip()
                 print("-------------打印tempstr-------------------------")
+                print(tempstr)
                 filmtypestr.join(tempstr)
             print("-------------打印filmtypesstr-------------------------")
             print(filmtypestr)
+            
 
+            #filmtype只取了一个
             filmtype = movie.xpath('/html/body/div[3]/div/div[2]/div[1]/ul/li[1]/a[1]/text()')
             filmdate = movie.xpath('/html/body/div[3]/div/div[2]/div[1]/ul/li[3]/text()')
             #打印调试
